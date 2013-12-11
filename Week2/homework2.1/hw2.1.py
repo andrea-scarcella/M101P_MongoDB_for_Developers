@@ -9,6 +9,7 @@ connection = pymongo.Connection("mongodb://localhost", safe=True)
 def hw2_1():
     db = connection.students
     result=db.grades.find({'score':{'$gt':65}}).sort('score', pymongo.ASCENDING).limit(1)
+    #print(result[0])
     for doc in result:
         print(doc)
 
