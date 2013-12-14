@@ -115,8 +115,13 @@ class BlogPostDAO:
         try:
             last_error = {'n':-1}           # this is here so the code runs before you fix the next line
             # XXX HW 3.3 Work here to add the comment to the designated post
+            post=self.get_post_by_permalink(permalink)
 
-
+            if post is not None:
+                post['comments'].append(comment)
+                #{'this _id HAS TO MATCH':post['THIS ONE _id (WASTED a good 30 mins on it!!!)']}
+                self.posts.update({'_id':post['_id']},{ '$push': { 'comments': comment }})
+                post=self.get_post_by_permalink(permalink)
             return last_error['n']          # return the number of documents updated
 
         except:
