@@ -17,16 +17,10 @@
  ,
  {
  '$sort':{
-	'count':1
+	'count':-1
  }
  },
  {
-  '$group':{
-	'_id':1,
-	'name':'$_id',
-	'result':{
-		'$last':'$count'
-				}
- }
+ '$limit':1
  }
  ]);
