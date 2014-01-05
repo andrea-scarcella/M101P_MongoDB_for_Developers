@@ -20,10 +20,13 @@
 
 
 db.zips.aggregate([
- {'$project': 
-     {
-	'first_char': {'$substr' : ['$city',0,1]},
-	
-     }	 
-   }
+	{'$project': 
+		{
+			'first_char': {'$substr' : ['$city',0,1]},
+			'pop':'$pop'
+		}	 
+	},
+	{
+	'$match':{'first_char':{'$regex':/^\d/}}
+	}
 ]);
