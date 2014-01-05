@@ -28,5 +28,11 @@ db.zips.aggregate([
 	},
 	{
 	'$match':{'first_char':{'$regex':/^\d/}}
+	},
+	{
+		'$group':{
+			'_id':null,
+			'pop':{'$sum':'$pop'}
+		}
 	}
 ]);
