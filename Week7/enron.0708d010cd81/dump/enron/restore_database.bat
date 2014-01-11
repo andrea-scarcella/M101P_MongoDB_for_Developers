@@ -1,0 +1,1 @@
+mongorestore --drop --db enron --collection messages messages.bson
