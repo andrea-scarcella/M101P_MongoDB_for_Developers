@@ -150,12 +150,9 @@ class BlogPostDAO:
         # XXX Final exam 
         # Work here. You need to update the num_likes value in the comment being liked
         # 
-        post = self.posts.find_one({'permalink': permalink}) 
-		# db.foo.drop();
-		# db.foo.insert({'_id':1,comments:[{'body':'1','num_likes':0},{'body':'2','num_likes':0},{'body':'3','num_likes':0}]});
-		# db.foo.update({'_id':1},{'$set':{'comments.2.num_likes':5}});
-		self.posts.update({'permalink': permalink},{'$set':{'comments.'+(comment_ordinal-1)+'.num_likes': comment['num_likes']}}, upsert=False,manipulate=False, safe=True)
-        return 0
+		post = self.posts.find_one({'permalink': permalink})
+		self.posts.update({'permalink': permalink},{'$set':{'comments.1.num_likes': comment['num_likes']}}, upsert=False,manipulate=False, safe=True)
+		return 0
 
 
 
