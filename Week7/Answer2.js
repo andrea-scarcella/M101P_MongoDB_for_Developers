@@ -8,7 +8,9 @@ db.messages.aggregate([
 	'headers.To':1
 	}
 },
-
+{
+ '$unwind':'$headers.To'
+},
 {
 '$group':{
 	'_id':'$_id',
